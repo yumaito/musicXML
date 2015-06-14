@@ -1,0 +1,5 @@
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\bin\Debug\musixXml.dll
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\bin\Debug\musixXml.pdb
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\obj\Debug\musixXml.dll
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\obj\Debug\musixXml.pdb
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\bin\Debug\musixXml.XML

@@ -1,0 +1,12 @@
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\bin\Debug\musicXMLTest.exe.config
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\bin\Debug\musicXMLTest.exe
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\bin\Debug\musicXMLTest.pdb
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\obj\Debug\musicXMLTest.Properties.Resources.resources
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\obj\Debug\musicXMLTest.csproj.GenerateResource.Cache
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\obj\Debug\musicXMLTest.exe
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\obj\Debug\musicXMLTest.pdb
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\bin\Debug\musicXml.dll
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\bin\Debug\musicXml.pdb
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\bin\Debug\musicXml.xml
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\obj\Debug\musicXMLTest.csprojResolveAssemblyReference.cache
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musicXMLTest\obj\Debug\musicXMLTest.Form1.resources

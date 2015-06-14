@@ -1,0 +1,410 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>musicXml</name>
+    </assembly>
+    <members>
+        <member name="M:musicXml.Attributes.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            楽譜の属性情報
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="P:musicXml.Attributes.StaffDetails">
+            <summary>
+            楽譜詳細（TABのチューニングなど）
+            </summary>
+        </member>
+        <member name="P:musicXml.Attributes.ClefInfo">
+            <summary>
+            記号情報（ト音記号、ヘ音記号、TABなど）
+            </summary>
+        </member>
+        <member name="P:musicXml.Attributes.BeatInfo">
+            <summary>
+            拍子情報
+            </summary>
+        </member>
+        <member name="P:musicXml.Attributes.Division">
+            <summary>
+            1拍の長さ
+            </summary>
+        </member>
+        <member name="P:musicXml.Attributes.Key">
+            <summary>
+            調合情報
+            </summary>
+        </member>
+        <member name="M:musicXml.InputMusicXml.#ctor(System.String)">
+            <summary>
+            musicXMLを読み込む（ファイルパス）
+            </summary>
+            <param name="path">ファイルの場所</param>
+        </member>
+        <member name="P:musicXml.InputMusicXml.PartName">
+            <summary>
+            パートネームリスト
+            </summary>
+        </member>
+        <member name="P:musicXml.InputMusicXml.Track">
+            <summary>
+            音符リスト
+            </summary>
+        </member>
+        <member name="P:musicXml.InputMusicXml.Title">
+            <summary>
+            タイトル
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.BeatInfo.Beats">
+            <summary>
+            分子
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.BeatInfo.BeatType">
+            <summary>
+            分母
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.Clef.Number">
+            <summary>
+            楽譜番号
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.Clef.ClefType">
+            <summary>
+            記号（ト音記号、ヘ音記号、TABなど）
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.Clef.Line">
+            <summary>
+            ライン情報
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.Clef.OctaveShift">
+            <summary>
+            オクターブシフト
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.Key.Fifths">
+            <summary>
+            調合記号（正ならシャープの数、負ならフラットの数）
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.Key.Mode">
+            <summary>
+            モード（メジャーorマイナー）
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.StaffDetails.Lines">
+            <summary>
+            横線の本数
+            </summary>
+        </member>
+        <member name="P:musicXml.AttributeElements.StaffDetails.Tuning">
+            <summary>
+            チューニング（0番=最も手前の弦（ベースなら0番=4弦、1番=3弦…））
+            </summary>
+        </member>
+        <member name="T:musicXml.NoteElements.tied">
+            <summary>
+            タイ
+            </summary>
+        </member>
+        <member name="F:musicXml.NoteElements.tied.start">
+            <summary>
+            タイのはじまり
+            </summary>
+        </member>
+        <member name="F:musicXml.NoteElements.tied.stop">
+            <summary>
+            タイの終わり
+            </summary>
+        </member>
+        <member name="F:musicXml.NoteElements.tied.center">
+            <summary>
+            タイがかかっている途中
+            </summary>
+        </member>
+        <member name="F:musicXml.NoteElements.tied.none">
+            <summary>
+            タイ無し
+            </summary>
+        </member>
+        <member name="T:musicXml.NoteElements.Notation">
+            <summary>
+            notationを管理するクラス
+            </summary>
+        </member>
+        <member name="P:musicXml.NoteElements.Notation.Ties">
+            <summary>
+            タイ
+            </summary>
+        </member>
+        <member name="P:musicXml.NoteElements.Notation.Tech">
+            <summary>
+            フレット＆弦情報
+            </summary>
+        </member>
+        <member name="P:musicXml.NoteElements.Notation.Tie">
+            <summary>
+            タイのパラメータ
+            </summary>
+        </member>
+        <member name="P:musicXml.NoteElements.Notation.Slur">
+            <summary>
+            スラーのパラメータ
+            </summary>
+        </member>
+        <member name="F:musicXml.NoteType.whole">
+            <summary>
+            全音符
+            </summary>
+        </member>
+        <member name="F:musicXml.NoteType.half">
+            <summary>
+            ２分音符
+            </summary>
+        </member>
+        <member name="F:musicXml.NoteType.quarter">
+            <summary>
+            ４分音符
+            </summary>
+        </member>
+        <member name="F:musicXml.NoteType.eighth">
+            <summary>
+            ８分音符
+            </summary>
+        </member>
+        <member name="F:musicXml.NoteType.sixteenth">
+            <summary>
+            16分音符
+            </summary>
+        </member>
+        <member name="T:musicXml.Note">
+            <summary>
+            1つの音符を表すクラス
+            </summary>
+        </member>
+        <member name="M:musicXml.Note.Clone(System.Int32)">
+            <summary>
+            長さnで複製する
+            </summary>
+            <param name="n"></param>
+            <returns></returns>
+        </member>
+        <member name="P:musicXml.Note.Pitch">
+            <summary>
+            音程
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.Notation">
+            <summary>
+            記号類（現在スラーとタイにのみ対応）
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.VoiceNum">
+            <summary>
+            ボーカル番号
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.Notetype">
+            <summary>
+            音符の種類（4分音符など）
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.Lyrics">
+            <summary>
+            歌詞
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.DotNum">
+            <summary>
+            付点の数
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.Division">
+            <summary>
+            Division（1拍の長さの定義）
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.Measure">
+            <summary>
+            小節番号
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.Duration">
+            <summary>
+            音符の長さ
+            </summary>
+        </member>
+        <member name="M:musicXml.OutputMusicXml.#ctor(System.Collections.Generic.List{System.Collections.Generic.List{musicXml.Note}},musicXml.PartClass[],System.String,System.String)">
+            <summary>
+            musicXmlを出力するクラス（全てのパートがピアノ音として出力されます）
+            4分の4拍子にのみ対応
+            </summary>
+            <param name="notes">ノートのリスト</param>
+            <param name="partName">パートリスト</param>
+            <param name="title">タイトル</param>
+            <param name="generater">生成するソフトの名称</param>
+        </member>
+        <member name="M:musicXml.PartClass.PrintLayout(System.Boolean)">
+            <summary>
+            小節のヘッダ部分を返す
+            </summary>
+            <param name="isTopIns">楽譜上で最も最初の楽器かどうか</param>
+            <returns></returns>
+        </member>
+        <member name="P:musicXml.PartClass.Name">
+            <summary>
+            楽器名
+            </summary>
+        </member>
+        <member name="P:musicXml.PartClass.ShortName">
+            <summary>
+            楽器の省略名
+            </summary>
+        </member>
+        <member name="P:musicXml.PartClass.MidiProgram">
+            <summary>
+            MIDIプログラム番号
+            </summary>
+        </member>
+        <member name="P:musicXml.PartClass.Channel">
+            <summary>
+            チャンネル番号
+            </summary>
+        </member>
+        <member name="P:musicXml.PartClass.ID">
+            <summary>
+            Id属性値
+            </summary>
+        </member>
+        <member name="T:musicXml.NoteElements.NoteStep">
+            <summary>
+            音名を表す列挙体
+            </summary>
+        </member>
+        <member name="T:musicXml.NoteElements.Pitch">
+            <summary>
+            音程を管理するクラス
+            </summary>
+        </member>
+        <member name="M:musicXml.NoteElements.Pitch.#ctor(musicXml.NoteElements.NoteStep,System.Int32)">
+            <summary>
+            音程を表すクラス
+            </summary>
+            <param name="notestep">音名</param>
+            <param name="octave">オクターブ番号</param>
+        </member>
+        <member name="M:musicXml.NoteElements.Pitch.#ctor(System.Int32)">
+            <summary>
+            音程を表すクラス
+            </summary>
+            <param name="midinumber">midi番号</param>
+        </member>
+        <member name="M:musicXml.NoteElements.Pitch.#ctor(System.Boolean)">
+            <summary>
+            音程を表すクラス
+            </summary>
+            <param name="isRest"></param>
+        </member>
+        <member name="M:musicXml.NoteElements.Pitch.XmlElement">
+            <summary>
+            musicXml用のXmlエレメントを返す
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:musicXml.NoteElements.Pitch.IsRest">
+            <summary>
+            休符かどうか
+            </summary>
+        </member>
+        <member name="P:musicXml.NoteElements.Pitch.Notestep">
+            <summary>
+            音名
+            </summary>
+        </member>
+        <member name="P:musicXml.NoteElements.Pitch.Octave">
+            <summary>
+            オクターブ番号
+            </summary>
+        </member>
+        <member name="P:musicXml.NoteElements.Pitch.MidiNumber">
+            <summary>
+            midi番号
+            </summary>
+        </member>
+        <member name="P:musicXml.Print.Number">
+            <summary>
+            楽譜番号
+            </summary>
+        </member>
+        <member name="P:musicXml.Print.StaffDistance">
+            <summary>
+            上の楽譜からの距離（isTopがfalseのとき有効）
+            </summary>
+        </member>
+        <member name="P:musicXml.Print.TopSystemDistance">
+            <summary>
+            楽譜の一番上からの距離（isTopがtrueのとき有効）
+            </summary>
+        </member>
+        <member name="P:musicXml.Print.RightMargin">
+            <summary>
+            右側のマージン（isTopがtrueのとき有効）
+            </summary>
+        </member>
+        <member name="P:musicXml.Print.LeftMargin">
+            <summary>
+            左側のマージン（isTopがtrueのとき有効）
+            </summary>
+        </member>
+        <member name="P:musicXml.Print.IsTop">
+            <summary>
+            一番上の譜面かどうか
+            </summary>
+        </member>
+        <member name="P:musicXml.NoteElements.Technique.StringNum">
+            <summary>
+            弦番号
+            </summary>
+        </member>
+        <member name="P:musicXml.NoteElements.Technique.FretNum">
+            <summary>
+            フレット番号
+            </summary>
+        </member>
+        <member name="M:musicXml.Track.XmlElement">
+            <summary>
+            XMLのエレメントを返す関数（多分使わない）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:musicXml.Track.Tempo">
+            <summary>
+            テンポ
+            </summary>
+        </member>
+        <member name="P:musicXml.Track.Attributes">
+            <summary>
+            トラックの属性情報
+            </summary>
+        </member>
+        <member name="P:musicXml.Track.Print">
+            <summary>
+            楽譜のプリント情報
+            </summary>
+        </member>
+        <member name="P:musicXml.Track.Notes">
+            <summary>
+            音符列
+            </summary>
+        </member>
+        <member name="P:musicXml.Track.Part">
+            <summary>
+            パート情報
+            </summary>
+        </member>
+    </members>
+</doc>

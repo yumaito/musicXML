@@ -1,0 +1,12 @@
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\bin\Debug\musicXml.xml
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\bin\Debug\musicXml.dll
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\bin\Debug\musicXml.pdb
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\obj\Debug\musicXml.dll
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\obj\Debug\musicXml.pdb
+C:\Users\悠真\Desktop\MyApps\KanjiAnki\musixXml\obj\Debug\musicXml.csprojResolveAssemblyReference.cache
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musixXml\bin\Debug\musicXml.xml
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musixXml\bin\Debug\musicXml.dll
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musixXml\bin\Debug\musicXml.pdb
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musixXml\obj\Debug\musicXml.csprojResolveAssemblyReference.cache
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musixXml\obj\Debug\musicXml.dll
+C:\Users\悠真\Desktop\MyApps\musicXMLTest\musixXml\obj\Debug\musicXml.pdb
