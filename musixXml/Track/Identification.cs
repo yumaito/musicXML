@@ -47,7 +47,9 @@ namespace musicXml
             if (!String.IsNullOrWhiteSpace(date))
             {
                 //dateが空白orNullでないなら日付データを取得
-                
+                this.date = DateTime.ParseExact(date, "yyyy-MM-dd", 
+                    System.Globalization.DateTimeFormatInfo.InvariantInfo, 
+                    System.Globalization.DateTimeStyles.None);
             }
         }
         #endregion

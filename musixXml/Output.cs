@@ -11,12 +11,12 @@ using System.ComponentModel;
 
 namespace musicXml
 {
-    public class OutputMusicXml
+    public class OutputMusicXml : interfaceBase
     {
         #region メンバ変数
         private List<List<Note>> notes;
-        private PartClass[] partName;
-        private List<Track> tracks;
+        //private PartClass[] partName;
+        //private List<Track> tracks;
         #endregion
 
         #region プロパティ
@@ -50,7 +50,13 @@ namespace musicXml
         #endregion
 
         #region 関数
-        private void SaveFile(string path,string title, string generater)
+        /// <summary>
+        /// musicXMLを書き込む
+        /// </summary>
+        /// <param name="path">ファイルを保存する場所</param>
+        /// <param name="title">曲のタイトル</param>
+        /// <param name="generater">このソフトウェアの名前</param>
+        private void SaveFile(string path, string title, string generater)
         {
             XDocument document = new XDocument(
                 new XDeclaration("1.0", "utf-8", "yes"),
@@ -148,7 +154,7 @@ namespace musicXml
             //document.Add
         }
 
-        
+
         #endregion
     }
 }

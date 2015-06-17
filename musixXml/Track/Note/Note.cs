@@ -257,6 +257,11 @@ namespace musicXml
         #endregion
 
         #region 関数
+        public override string ToString()
+        {
+            return this.pitch.ToString() + ":" + Statics.GetDescription(this.notetype) + ":" + this.duration;
+            //return base.ToString();
+        }
         public XElement XmlElement()
         {
             //this.LengthToType();

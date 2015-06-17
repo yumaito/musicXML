@@ -12,46 +12,46 @@ using musicXml.AttributeElements;
 
 namespace musicXml
 {
-    public class InputMusicXml
+    public class InputMusicXml : interfaceBase
     {
         #region メンバ変数
-        private PartClass[] partName;
-        private List<Track> track;
+        //private PartClass[] partName;
+        //private List<Track> track;
         private string title;
-        private Identification identification;
+        //private Identification identification;
         #endregion
 
         #region プロパティ
         /// <summary>
         /// このmusicXMLを作成したソフトなどの情報
         /// </summary>
-        public Identification Identification
-        {
-            get
-            {
-                return this.Identification;
-            }
-        }
+        //public Identification Identification
+        //{
+        //    get
+        //    {
+        //        return this.Identification;
+        //    }
+        //}
         /// <summary>
         /// パートネームリスト
         /// </summary>
-        public PartClass[] PartName
-        {
-            get
-            {
-                return this.partName;
-            }
-        }
-        /// <summary>
-        /// 音符リスト
-        /// </summary>
-        public List<Track> Track
-        {
-            get
-            {
-                return this.track;
-            }
-        }
+        //public PartClass[] PartName
+        //{
+        //    get
+        //    {
+        //        return this.partName;
+        //    }
+        //}
+        ///// <summary>
+        ///// 音符リスト
+        ///// </summary>
+        //public List<Track> Track
+        //{
+        //    get
+        //    {
+        //        return this.track;
+        //    }
+        //}
         /// <summary>
         /// タイトル
         /// </summary>
@@ -60,7 +60,7 @@ namespace musicXml
             get
             {
                 return this.title;
-            }   
+            }
         }
         #endregion
 
@@ -106,7 +106,7 @@ namespace musicXml
         }
         private void ReturnTitle(IEnumerable<XElement> q)
         {
-            if(q.Count() != 0)
+            if (q.Count() != 0)
             {
                 //要素が1個以上存在するなら
                 IEnumerable<XElement> node = q.Elements("work-title");
@@ -127,23 +127,23 @@ namespace musicXml
             {
                 IEnumerable<XElement> node = q.Elements("score-part");
                 List<PartClass> temp = new List<PartClass>();
-                foreach(XElement n in node)
+                foreach (XElement n in node)
                 {
                     temp.Add(new PartClass(n));
                 }
                 this.partName = temp.ToArray();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
         }
         private void ReturnTrack(IEnumerable<XElement> q)
         {
-            if(q.Count() != 0)
+            if (q.Count() != 0)
             {
                 track = new List<Track>();
-                foreach(XElement node in q)
+                foreach (XElement node in q)
                 {
                     track.Add(new Track(node));
                 }

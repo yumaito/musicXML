@@ -4,6 +4,21 @@
         <name>musicXml</name>
     </assembly>
     <members>
+        <member name="P:musicXml.interfaceBase.PartName">
+            <summary>
+            パートネームリスト
+            </summary>
+        </member>
+        <member name="P:musicXml.interfaceBase.Track">
+            <summary>
+            音符リスト
+            </summary>
+        </member>
+        <member name="P:musicXml.interfaceBase.Identification">
+            <summary>
+            このmusicXMLを作成したソフトなどの情報
+            </summary>
+        </member>
         <member name="M:musicXml.Attributes.#ctor(System.Xml.Linq.XElement)">
             <summary>
             楽譜の属性情報
@@ -40,21 +55,6 @@
             musicXMLを読み込む（ファイルパス）
             </summary>
             <param name="path">ファイルの場所</param>
-        </member>
-        <member name="P:musicXml.InputMusicXml.Identification">
-            <summary>
-            このmusicXMLを作成したソフトなどの情報
-            </summary>
-        </member>
-        <member name="P:musicXml.InputMusicXml.PartName">
-            <summary>
-            パートネームリスト
-            </summary>
-        </member>
-        <member name="P:musicXml.InputMusicXml.Track">
-            <summary>
-            音符リスト
-            </summary>
         </member>
         <member name="P:musicXml.InputMusicXml.Title">
             <summary>
@@ -287,6 +287,14 @@
             <param name="partName">パートリスト</param>
             <param name="title">タイトル</param>
             <param name="generater">生成するソフトの名称</param>
+        </member>
+        <member name="M:musicXml.OutputMusicXml.SaveFile(System.String,System.String,System.String)">
+            <summary>
+            musicXMLを書き込む
+            </summary>
+            <param name="path">ファイルを保存する場所</param>
+            <param name="title">曲のタイトル</param>
+            <param name="generater">このソフトウェアの名前</param>
         </member>
         <member name="M:musicXml.PartClass.PrintLayout(System.Boolean)">
             <summary>
