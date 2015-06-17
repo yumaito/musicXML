@@ -7,7 +7,9 @@ using System.Xml;
 using System.Xml.Linq;
 using System.IO;
 using System.ComponentModel;
-
+using musicXml.NoteElements;
+using musicXml.AttributeElements;
+using musicXml;
 
 namespace musicXml
 {
@@ -24,28 +26,30 @@ namespace musicXml
 
         #region コンストラクタ
         /// <summary>
-        /// musicXmlを出力するクラス（全てのパートがピアノ音として出力されます）
+        /// musicXmlを出力するクラス
         /// 4分の4拍子にのみ対応
         /// </summary>
-        /// <param name="notes">ノートのリスト</param>
+        /// <param name="path">保存する場所</param>
+        /// <param name="tracks">トラック</param>
         /// <param name="partName">パートリスト</param>
         /// <param name="title">タイトル</param>
         /// <param name="generater">生成するソフトの名称</param>
-        public OutputMusicXml(List<List<Note>> notes, PartClass[] partName, string title, string generater)
+        public OutputMusicXml(string path, List<Track> tracks, PartClass[] partName, string title, string generater)
         {
             if (notes.Count != partName.Length)
             {
                 //パートネームの数と音符リストの数が異なる場合例外を返す
                 throw new ArgumentException("音符リストの数とパートネームの数が異なります！");
             }
-            this.notes = notes;
+            //.notes = notes;
             this.partName = partName;
-            tracks = new List<Track>();
+            this.identification = new musicXml.Identification(generater, DateTime.Now);
+            this.tracks = tracks;
             Note.Division = 4;
-            for (int i = 0; i < partName.Length; i++)
-            {
-                tracks.Add(new Track(notes[i], partName[i], ClefType.G2));
-            }
+            //for (int i = 0; i < partName.Length; i++)
+            //{
+            //    this.tracks.Add(new Track(notes[i], partName[i], ClefType.G2));
+            //}
         }
         #endregion
 
@@ -76,15 +80,16 @@ namespace musicXml
 
             #region identification
             //identificationノード
-            XElement identification = new XElement("identification");
-            //encodingノード
-            XElement enc = new XElement("encoding");
-            enc.Add(new XElement("software", generater));
-            DateTime dt = DateTime.Now;
-            enc.Add(new XElement("encoding-date", dt.Year.ToString() + "-" + dt.Month.ToString()
-                + "-" + dt.Day.ToString()));
-            identification.Add(enc);
-            document.Root.Add(identification);
+            document.Root.Add(this.identification.XmlElement());
+            //XElement identification = new XElement("identification");
+            ////encodingノード
+            //XElement enc = new XElement("encoding");
+            //enc.Add(new XElement("software", generater));
+            //DateTime dt = DateTime.Now;
+            //enc.Add(new XElement("encoding-date", dt.Year.ToString() + "-" + dt.Month.ToString()
+            //    + "-" + dt.Day.ToString()));
+            //identification.Add(enc);
+            //document.Root.Add(identification);
             #endregion
 
             #region defaults
@@ -145,16 +150,25 @@ namespace musicXml
             #endregion
 
             //==========================================//
-            foreach (Track track in this.tracks)
+            for (int i = 0; i < this.tracks.Count; i++)
             {
-                document.Root.Add(track.XmlElement());
+                if (i == 0)
+                {
+                    document.Root.Add(tracks[i].XmlElement(true));
+                }
+                else
+                {
+                    document.Root.Add(tracks[i].XmlElement(false));
+                }
             }
+            //foreach (Track track in this.tracks)
+            //{
+            //    document.Root.Add(track.XmlElement());
+            //}
             //==========================================//
             document.Save(path);
             //document.Add
         }
-
-
         #endregion
     }
 }

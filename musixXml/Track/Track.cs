@@ -100,6 +100,8 @@ namespace musicXml
             this.notes = notes;
             this.partClass = part;
             this.clefType = clefType;
+            //notesを小節単位にまとめ直す
+            //
         }
         public Track(XElement node)
         {
@@ -153,8 +155,6 @@ namespace musicXml
         public XElement XmlElement(bool isFirst)
         {
             XElement result = new XElement("part");
-            //notesを全て小節単位に書き直す
-
             //result.Add(this.partClass.PrintLayout(isFirst));
             //小節番号でループ
             for (int i = 0; i < measures.Count; i++)
@@ -218,7 +218,7 @@ namespace musicXml
             //
             return result;
         }
-        //音符列を小節ごとに再編成し直す処理
+        //小節列を音符列に展開
         private void ReturnNotes()
         {
             //IEnumerable<XElement> measure = node.Elements("measure");

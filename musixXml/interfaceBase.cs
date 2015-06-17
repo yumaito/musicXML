@@ -10,7 +10,7 @@ namespace musicXml
     {
         #region メンバ変数
         protected PartClass[] partName;
-        protected List<Track> track;
+        protected List<Track> tracks;
         protected Identification identification;
         #endregion
 
@@ -32,7 +32,7 @@ namespace musicXml
         {
             get
             {
-                return this.track;
+                return this.tracks;
             }
         }
         /// <summary>

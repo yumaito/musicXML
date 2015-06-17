@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.IO;
+using musicXml.NoteElements;
+using musicXml.AttributeElements;
 
 
 namespace musicXml
@@ -57,6 +59,11 @@ namespace musicXml
                     System.Globalization.DateTimeStyles.None);
             }
         }
+        /// <summary>
+        /// 出力時のコンストラクタ
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="dt"></param>
         public Identification(string name, DateTime dt)
         {
             this.softwareName = name;

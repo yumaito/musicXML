@@ -76,6 +76,14 @@ namespace musicXml
         #endregion
 
         #region コンストラクタ
+        /// <summary>
+        /// 1つのパートを表すクラス
+        /// </summary>
+        /// <param name="id">パートID（P1など）</param>
+        /// <param name="name">名前（Pianoなど）</param>
+        /// <param name="shortenName">省略名（Pi.など）</param>
+        /// <param name="midiProgram"></param>
+        /// <param name="channel"></param>
         public PartClass(string id, string name, string shortenName, int midiProgram, int channel)
         {
             this.id = id;
@@ -84,6 +92,13 @@ namespace musicXml
             this.midiProgram = midiProgram;
             this.channel = channel;
         }
+        /// <summary>
+        /// 1つのパートを表すクラス
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="midiProgram"></param>
+        /// <param name="channel"></param>
         public PartClass(string id, string name, int midiProgram, int channel)
         {
             this.id = id;
@@ -91,6 +106,10 @@ namespace musicXml
             this.shortenName = name.Substring(0, 2);
             this.midiProgram = midiProgram;
             this.channel = channel;
+        }
+        public PartClass(string id)
+            : this(id, "Piano", "P.", 1, 1)
+        {
         }
         public PartClass(XElement node)
         {
