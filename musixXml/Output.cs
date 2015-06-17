@@ -30,7 +30,7 @@ namespace musicXml
         /// 4分の4拍子にのみ対応
         /// </summary>
         /// <param name="path">保存する場所</param>
-        /// <param name="tracks">トラック</param>
+        /// <param name="tracks">トラック（各ノートはdivisionを4とする）</param>
         /// <param name="partName">パートリスト</param>
         /// <param name="title">タイトル</param>
         /// <param name="generater">生成するソフトの名称</param>
@@ -45,11 +45,13 @@ namespace musicXml
             this.partName = partName;
             this.identification = new musicXml.Identification(generater, DateTime.Now);
             this.tracks = tracks;
+            //1拍の長さを4に設定
             Note.Division = 4;
             //for (int i = 0; i < partName.Length; i++)
             //{
             //    this.tracks.Add(new Track(notes[i], partName[i], ClefType.G2));
             //}
+            this.SaveFile(path, title);
         }
         #endregion
 
@@ -60,7 +62,7 @@ namespace musicXml
         /// <param name="path">ファイルを保存する場所</param>
         /// <param name="title">曲のタイトル</param>
         /// <param name="generater">このソフトウェアの名前</param>
-        private void SaveFile(string path, string title, string generater)
+        private void SaveFile(string path, string title)
         {
             XDocument document = new XDocument(
                 new XDeclaration("1.0", "utf-8", "yes"),

@@ -28,7 +28,7 @@ namespace musicXml
         //
         private Print print;
         private Attributes attributes;
-        
+
         #endregion
 
         #region プロパティ
@@ -95,13 +95,20 @@ namespace musicXml
         #endregion
 
         #region コンストラクタ
-        public Track(List<Note> notes, PartClass part,ClefType clefType)
+        public Track(List<Note> notes, PartClass part, ClefType clefType)
         {
             this.notes = notes;
             this.partClass = part;
             this.clefType = clefType;
             //notesを小節単位にまとめ直す
+            this.CreateMeasure();
             //
+        }
+        public Track(List<Measure> measure, PartClass part, ClefType clefType)
+        {
+            this.measures = measure;
+            this.partClass = part;
+            this.clefType = clefType;
         }
         public Track(XElement node)
         {
@@ -116,7 +123,7 @@ namespace musicXml
             IEnumerable<XElement> attributeNode = node.Descendants("attributes");
             this.attributes = new Attributes(attributeNode.ElementAt(0));
             //テンポ情報
-            if(node.Elements("sound").Count() != 0)
+            if (node.Elements("sound").Count() != 0)
             {
                 this.tempo = int.Parse(node.Attribute("tempo").Value);
             }
@@ -149,7 +156,7 @@ namespace musicXml
         public XElement XmlElement()
         {
             XElement result = new XElement("part");
-            
+
             return result;
         }
         public XElement XmlElement(bool isFirst)
@@ -189,19 +196,19 @@ namespace musicXml
         {
             XElement result = new XElement("attributes");
             //
-            result.Add(new XElement("divisions",Note.Division));
+            result.Add(new XElement("divisions", Note.Division));
             //
             XElement key = new XElement("key");
             key.Add(new XElement("fifths", "0"));
             result.Add(key);
             //
             XElement time = new XElement("time");
-            time.Add(new XElement("beats", "4"));
-            time.Add(new XElement("beat-type", "4"));
+            time.Add(new XElement("beats", this.attributes.BeatInfo.Beats.ToString()));
+            time.Add(new XElement("beat-type", this.attributes.BeatInfo.BeatType.ToString()));
             result.Add(time);
             //
             XElement clef = new XElement("clef");
-            switch(this.clefType)
+            switch (this.clefType)
             {
                 case ClefType.G2:
                     clef.Add(new XElement("sign", "G"));
@@ -230,9 +237,30 @@ namespace musicXml
         }
         private void CreateMeasure()
         {
-            this.measures = new List<Measure>();
+            //tempに全て16分音符にした音符列を格納
+            List<Note> temp = new List<Note>();
+            foreach (Note n in this.notes)
+            {
+                temp.AddRange(n.Divide().ToList());
+            }
 
-        }
+            //16個ずつまとめて1小節とする
+            this.measures = new List<Measure>();
+            int count = 1;
+            while (temp.Count == 0)
+            {
+                int remveNum = 16;
+                if (temp.Count < remveNum)
+                {
+                    //もしtempの要素数が16より少ないなら
+                    remveNum = temp.Count;
+                }
+                this.measures.Add(new Measure(temp.GetRange(0, remveNum), count));
+                temp.RemoveRange(0, remveNum);
+                count++;
+            }
+
         #endregion
+        }
     }
 }

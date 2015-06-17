@@ -66,6 +66,12 @@ namespace musicXml
                 this.notes.Add(new Note(element, this.number));
             }
         }
+        public Measure(List<Note> notes, int number)
+        {
+            this.notes = notes;
+            this.number = number;
+            this.Optimize();
+        }
         #endregion
 
         #region 関数
@@ -82,6 +88,13 @@ namespace musicXml
                 result.Add(note.XmlElement());
             }
             return result;
+        }
+        /// <summary>
+        /// 基本音符のみで構成するように最適化
+        /// </summary>
+        private void Optimize()
+        {
+
         }
         #endregion
     }

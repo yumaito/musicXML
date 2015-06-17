@@ -291,7 +291,8 @@ namespace musicXml
 
         public Note[] Divide()
         {
-            Note[] result = new Note[this.duration];
+            int tempD = 4 * this.duration / Note.division;
+            Note[] result = new Note[tempD];
             Lyrics temp = this.lyrics;
             for (int i = 0; i < result.Length; i++)
             {
@@ -299,6 +300,7 @@ namespace musicXml
                 result[i] = new Note(this.pitch, n, 1, new Lyrics("-", Syllabic.middle, 1));
             }
             result[0].notation.TieChange(0);
+            //Lyricの音節タイプ選択
             if ((temp.SyllabicValue == Syllabic.begin) || (temp.SyllabicValue == Syllabic.single))
             {
                 //もともとbeginかsingleであれば先頭をbegin（それ以外はmiddleになる）
@@ -310,6 +312,7 @@ namespace musicXml
                 //もともとmiddleでないならendにする（それ以外はmiddleになる）
                 result[result.Length - 1].ChangeSyllabic(Syllabic.end);
             }
+            //
             if(result.Length == 1)
             {
                 result[0].notation.TieChange(-1);
