@@ -193,20 +193,24 @@ namespace musicXml.NoteElements
                     return null;
             }
         }
-        public void TieChange(int n)
+        /// <summary>
+        /// タイの種類を変更する
+        /// </summary>
+        /// <param name="n"></param>
+        public void TieChange(tied t)
         {
-            switch (n)
+            switch (t)
             {
-                case -1:
+                case tied.none:
                     this.tie = tied.none;
                     break;
-                case 0:
+                case tied.start:
                     this.tie = tied.start;
                     break;
-                case 1:
+                case tied.stop:
                     this.tie = tied.stop;
                     break;
-                case 2:
+                case tied.center:
                     this.tie = tied.center;
                     break;
                 default:

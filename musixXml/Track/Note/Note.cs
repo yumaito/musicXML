@@ -288,7 +288,10 @@ namespace musicXml
             result.Add(this.notation.XmlElement());
             return result;
         }
-
+        /// <summary>
+        /// 音符16分音符の集合体に分ける（音符はタイで結ばれる）
+        /// </summary>
+        /// <returns></returns>
         public Note[] Divide()
         {
             int tempD = 4 * this.duration / Note.division;
@@ -299,23 +302,26 @@ namespace musicXml
                 Notation n = new Notation(tied.center, slur.none);
                 result[i] = new Note(this.pitch, n, 1, new Lyrics("-", Syllabic.middle, 1));
             }
-            result[0].notation.TieChange(0);
+            //最初の音符はタイスタート
+            result[0].notation.TieChange(tied.start);
             //Lyricの音節タイプ選択
             if ((temp.SyllabicValue == Syllabic.begin) || (temp.SyllabicValue == Syllabic.single))
             {
                 //もともとbeginかsingleであれば先頭をbegin（それ以外はmiddleになる）
                 result[0].ChangeSyllabic(temp.SyllabicValue);
             }
-            result[result.Length - 1].notation.TieChange(1);
+            //
+            //最後の音符はタイストップ
+            result[result.Length - 1].notation.TieChange(tied.stop);
             if (temp.SyllabicValue != Syllabic.middle)
             {
                 //もともとmiddleでないならendにする（それ以外はmiddleになる）
                 result[result.Length - 1].ChangeSyllabic(Syllabic.end);
             }
-            //
-            if(result.Length == 1)
+            //長さが1（16分音符のみのならタイなし）
+            if (result.Length == 1)
             {
-                result[0].notation.TieChange(-1);
+                result[0].notation.TieChange(tied.none);
             }
             return result;
         }
