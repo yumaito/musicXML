@@ -20,25 +20,26 @@ namespace musicXml
     {
         #region メンバ変数
         private List<Note> notes;
-        private List<List<Note>> notesByMeasure;
+        private List<Measure> measures;
+        //private List<List<Note>> notesByMeasure;
         private PartClass partClass;
         private ClefType clefType;
         private int tempo;
         //
         private Print print;
         private Attributes attributes;
-        private Identification identification;
+        
         #endregion
 
         #region プロパティ
         /// <summary>
-        /// このmusicXMLを作成したソフトなどの情報
+        /// 小節リスト
         /// </summary>
-        public Identification Identification
+        public List<Measure> Measures
         {
             get
             {
-                return this.Identification;
+                return this.measures;
             }
         }
         /// <summary>
@@ -117,16 +118,23 @@ namespace musicXml
             {
                 this.tempo = int.Parse(node.Attribute("tempo").Value);
             }
+            //小節情報
+            IEnumerable<XElement> measureNode = node.Descendants("measure");
+            this.measures = new List<Measure>();
+            foreach (XElement mm in measureNode)
+            {
+                this.measures.Add(new Measure(mm));
+            }
             //
             //音符情報
             IEnumerable<XElement> noteNode = node.Descendants("note");
             this.notes = new List<Note>();
-            foreach(XElement nn in noteNode)
-            {
-                //小節番号を取得
-                int measureNum = int.Parse(nn.Parent.Attribute("number").Value);
-                this.notes.Add(new Note(nn, measureNum));
-            }
+            //foreach(XElement nn in noteNode)
+            //{
+            //    //小節番号を取得
+            //    int measureNum = int.Parse(nn.Parent.Attribute("number").Value);
+            //    this.notes.Add(new Note(nn, measureNum));
+            //}
         }
         #endregion
 
@@ -147,23 +155,24 @@ namespace musicXml
 
             //result.Add(this.partClass.PrintLayout(isFirst));
             //小節番号でループ
-            for (int i = 0; i < notesByMeasure.Count; i++)
+            for (int i = 0; i < measures.Count; i++)
             {
-                XElement measure = new XElement("measure");
-                measure.Add(new XAttribute("number", (i + 1).ToString()));
-                if (i == 0)
-                {
-                    //最初の小節だけはプリント要素とアトリビュート要素を加える
-                    measure.Add(this.partClass.PrintLayout(isFirst));
-                    measure.Add(this.Attribute());
-                }
-                //現在の小節のノートを加える処理
-                //======================================
-                for (int j = 0; j < this.notesByMeasure[i].Count; j++)
-                {
-                    measure.Add(this.notesByMeasure[i][j].XmlElement());
-                }
-                //======================================
+                XElement measure = this.measures[i].XmlElement();
+
+                //measure.Add(new XAttribute("number", (i + 1).ToString()));
+                //if (i == 0)
+                //{
+                //    //最初の小節だけはプリント要素とアトリビュート要素を加える
+                //    measure.Add(this.partClass.PrintLayout(isFirst));
+                //    measure.Add(this.Attribute());
+                //}
+                ////現在の小節のノートを加える処理
+                ////======================================
+                //for (int j = 0; j < this.notesByMeasure[i].Count; j++)
+                //{
+                //    measure.Add(this.notesByMeasure[i][j].XmlElement());
+                //}
+                ////======================================
                 //現在の小節をパートに加える処理
                 result.Add(measure);
             }

@@ -41,6 +41,11 @@
             </summary>
             <param name="path">ファイルの場所</param>
         </member>
+        <member name="P:musicXml.InputMusicXml.Identification">
+            <summary>
+            このmusicXMLを作成したソフトなどの情報
+            </summary>
+        </member>
         <member name="P:musicXml.InputMusicXml.PartName">
             <summary>
             パートネームリスト
@@ -104,6 +109,31 @@
         <member name="P:musicXml.AttributeElements.StaffDetails.Tuning">
             <summary>
             チューニング（0番=最も手前の弦（ベースなら0番=4弦、1番=3弦…））
+            </summary>
+        </member>
+        <member name="P:musicXml.Identification.SoftwareName">
+            <summary>
+            このmusicXMLを作成したソフトの名前
+            </summary>
+        </member>
+        <member name="P:musicXml.Identification.EncodingDate">
+            <summary>
+            このmusicXMLが作成された日付
+            </summary>
+        </member>
+        <member name="P:musicXml.Measure.Number">
+            <summary>
+            小節番号
+            </summary>
+        </member>
+        <member name="P:musicXml.Measure.Width">
+            <summary>
+            小節の幅
+            </summary>
+        </member>
+        <member name="P:musicXml.Measure.Notes">
+            <summary>
+            音符リスト
             </summary>
         </member>
         <member name="T:musicXml.NoteElements.tied">
@@ -236,6 +266,16 @@
         <member name="P:musicXml.Note.Duration">
             <summary>
             音符の長さ
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.isPosition">
+            <summary>
+            音符座標に対応しているかどうか
+            </summary>
+        </member>
+        <member name="P:musicXml.Note.Position">
+            <summary>
+            音符座標
             </summary>
         </member>
         <member name="M:musicXml.OutputMusicXml.#ctor(System.Collections.Generic.List{System.Collections.Generic.List{musicXml.Note}},musicXml.PartClass[],System.String,System.String)">
@@ -380,6 +420,11 @@
             XMLのエレメントを返す関数（多分使わない）
             </summary>
             <returns></returns>
+        </member>
+        <member name="P:musicXml.Track.Measures">
+            <summary>
+            小節リスト
+            </summary>
         </member>
         <member name="P:musicXml.Track.Tempo">
             <summary>

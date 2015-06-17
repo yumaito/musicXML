@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,7 +48,9 @@
     <Compile Include="Track\Attributes\Clef.cs" />
     <Compile Include="Track\Attributes\Key.cs" />
     <Compile Include="Track\Attributes\StaffDetails.cs" />
+    <Compile Include="Track\Identification.cs" />
     <Compile Include="Track\Note\Lyrics.cs" />
+    <Compile Include="Track\Note\Measure.cs" />
     <Compile Include="Track\Note\Notation.cs" />
     <Compile Include="Track\Note\Note.cs" />
     <Compile Include="Output.cs" />

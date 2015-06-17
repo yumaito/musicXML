@@ -247,6 +247,12 @@ namespace musicXml
             {
                 this.notation = new Notation(node.Element("notations"));
             }
+            if ((node.Attribute("default-x") != null) && (node.Attribute("default-y")!=null))
+            {
+                double x = Double.Parse(node.Attribute("default-x").Value);
+                double y = Double.Parse(node.Attribute("default-y").Value);
+                this.position = new Point((int)x,(int)y);
+            }
         }
         #endregion
 

@@ -93,6 +93,15 @@ namespace musicXml
             {
                 //要素が1個以上存在するなら
                 //encodingノードを取得
+                XElement enc = q.ElementAt(0).Element("encoding");
+                if (enc != null)
+                {
+                    //softwareノード
+                    XElement software = enc.Element("software");
+                    //ecoding-dateノード
+                    XElement date = enc.Element("encoding-date");
+                    this.identification = new Identification(software.Value, date.Value);
+                }
             }
         }
         private void ReturnTitle(IEnumerable<XElement> q)
