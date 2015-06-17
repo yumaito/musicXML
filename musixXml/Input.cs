@@ -142,10 +142,10 @@ namespace musicXml
         {
             if (q.Count() != 0)
             {
-                track = new List<Track>();
+                tracks = new List<Track>();
                 foreach (XElement node in q)
                 {
-                    track.Add(new Track(node));
+                    tracks.Add(new Track(node));
                 }
             }
         }
