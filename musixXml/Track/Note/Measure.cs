@@ -68,9 +68,10 @@ namespace musicXml
         }
         public Measure(List<Note> notes, int number)
         {
-            this.notes = notes;
+            List<Note> tempNotes = notes;
+            //this.notes = notes;
             this.number = number;
-            this.Optimize();
+            this.Optimize(tempNotes);
         }
         #endregion
 
@@ -92,9 +93,51 @@ namespace musicXml
         /// <summary>
         /// 基本音符のみで構成するように最適化
         /// </summary>
-        private void Optimize()
+        private void Optimize(List<Note> dividedNotes)
         {
+            //（タイストップでまとめる）====================================
+            List<List<Note>> notesOfNote = new List<List<Note>>();
+            List<Note> t = new List<Note>();
+            for (int i = 0; i < dividedNotes.Count; i++)
+            {
+                t.Add(dividedNotes[i]);
+                if ((dividedNotes[i].Notation.Tie == NoteElements.tied.stop) ||
+                    (i == dividedNotes.Count - 1))
+                {
+                    //現在参照している音符のタイが「ストップ」or「最後の音符」なら
+                    notesOfNote.Add(t);
+                    t = new List<Note>();
+                }
+            }
+            //=====================================
+            foreach (List<Note> onenote in notesOfNote)
+            {
 
+            }
+        }
+
+        private List<Note> OneNoteOptimize(List<Note> n)
+        {
+            List<Note> result = new List<Note>();
+            int l = 0;
+            for (int i = Note.BasicNote.Length - 1; i >= 0; i++)
+            {
+                if (result.Count - Note.BasicNote[i] > 0)
+                {
+                    l = i;
+                    result.Add(n[0].Clone(Note.BasicNote[i]));
+                    //残りの音符
+                    break;
+                }
+                if (result.Count - Note.BasicNote[i] == 0)
+                {
+                    l = i;
+                    result.Add(n[0].Clone(Note.BasicNote[i]));
+                    break;
+                }
+            }
+            //
+            result.Add(n[0].Clone(Note.BasicNote[l]));
         }
         #endregion
     }

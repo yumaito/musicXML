@@ -111,6 +111,20 @@
             チューニング（0番=最も手前の弦（ベースなら0番=4弦、1番=3弦…））
             </summary>
         </member>
+        <member name="M:musicXml.Identification.#ctor(System.String,System.String)">
+            <summary>
+            入力時のコンストラクタ
+            </summary>
+            <param name="name"></param>
+            <param name="date"></param>
+        </member>
+        <member name="M:musicXml.Identification.#ctor(System.String,System.DateTime)">
+            <summary>
+            出力時のコンストラクタ
+            </summary>
+            <param name="name"></param>
+            <param name="dt"></param>
+        </member>
         <member name="P:musicXml.Identification.SoftwareName">
             <summary>
             このmusicXMLを作成したソフトの名前
@@ -119,6 +133,11 @@
         <member name="P:musicXml.Identification.EncodingDate">
             <summary>
             このmusicXMLが作成された日付
+            </summary>
+        </member>
+        <member name="M:musicXml.Measure.Optimize">
+            <summary>
+            基本音符のみで構成するように最適化
             </summary>
         </member>
         <member name="P:musicXml.Measure.Number">
@@ -165,6 +184,12 @@
             <summary>
             notationを管理するクラス
             </summary>
+        </member>
+        <member name="M:musicXml.NoteElements.Notation.TieChange(musicXml.NoteElements.tied)">
+            <summary>
+            タイの種類を変更する
+            </summary>
+            <param name="n"></param>
         </member>
         <member name="P:musicXml.NoteElements.Notation.Ties">
             <summary>
@@ -215,6 +240,12 @@
             <summary>
             1つの音符を表すクラス
             </summary>
+        </member>
+        <member name="M:musicXml.Note.Divide">
+            <summary>
+            音符16分音符の集合体に分ける（音符はタイで結ばれる）
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:musicXml.Note.Clone(System.Int32)">
             <summary>
@@ -278,23 +309,43 @@
             音符座標
             </summary>
         </member>
-        <member name="M:musicXml.OutputMusicXml.#ctor(System.Collections.Generic.List{System.Collections.Generic.List{musicXml.Note}},musicXml.PartClass[],System.String,System.String)">
+        <member name="M:musicXml.OutputMusicXml.#ctor(System.String,System.Collections.Generic.List{musicXml.Track},musicXml.PartClass[],System.String,System.String)">
             <summary>
-            musicXmlを出力するクラス（全てのパートがピアノ音として出力されます）
+            musicXmlを出力するクラス
             4分の4拍子にのみ対応
             </summary>
-            <param name="notes">ノートのリスト</param>
+            <param name="path">保存する場所</param>
+            <param name="tracks">トラック（各ノートはdivisionを4とする）</param>
             <param name="partName">パートリスト</param>
             <param name="title">タイトル</param>
             <param name="generater">生成するソフトの名称</param>
         </member>
-        <member name="M:musicXml.OutputMusicXml.SaveFile(System.String,System.String,System.String)">
+        <member name="M:musicXml.OutputMusicXml.SaveFile(System.String,System.String)">
             <summary>
             musicXMLを書き込む
             </summary>
             <param name="path">ファイルを保存する場所</param>
             <param name="title">曲のタイトル</param>
             <param name="generater">このソフトウェアの名前</param>
+        </member>
+        <member name="M:musicXml.PartClass.#ctor(System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            1つのパートを表すクラス
+            </summary>
+            <param name="id">パートID（P1など）</param>
+            <param name="name">名前（Pianoなど）</param>
+            <param name="shortenName">省略名（Pi.など）</param>
+            <param name="midiProgram"></param>
+            <param name="channel"></param>
+        </member>
+        <member name="M:musicXml.PartClass.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            1つのパートを表すクラス
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+            <param name="midiProgram"></param>
+            <param name="channel"></param>
         </member>
         <member name="M:musicXml.PartClass.PrintLayout(System.Boolean)">
             <summary>

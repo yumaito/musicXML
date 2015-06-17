@@ -44,7 +44,7 @@ namespace musicXml
         /// <summary>
         /// 拍子情報
         /// </summary>
-        private BeatInfo BeatInfo
+        public BeatInfo BeatInfo
         {
             get
             {
