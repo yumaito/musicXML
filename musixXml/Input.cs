@@ -18,9 +18,20 @@ namespace musicXml
         private PartClass[] partName;
         private List<Track> track;
         private string title;
+        private Identification identification;
         #endregion
 
         #region プロパティ
+        /// <summary>
+        /// このmusicXMLを作成したソフトなどの情報
+        /// </summary>
+        public Identification Identification
+        {
+            get
+            {
+                return this.Identification;
+            }
+        }
         /// <summary>
         /// パートネームリスト
         /// </summary>
@@ -64,6 +75,9 @@ namespace musicXml
             IEnumerable<XElement> titleQuery = xmlDoc.Root.Descendants("work");
             this.ReturnTitle(titleQuery);
             //
+            IEnumerable<XElement> idQ = xmlDoc.Root.Descendants("identification");
+
+            //
             IEnumerable<XElement> pathQuery = xmlDoc.Root.Descendants("part-list");
             this.ReturnPart(pathQuery);
             //
@@ -73,6 +87,14 @@ namespace musicXml
         #endregion
 
         #region 関数
+        private void ReturnID(IEnumerable<XElement> q)
+        {
+            if (q.Count() != 0)
+            {
+                //要素が1個以上存在するなら
+                //encodingノードを取得
+            }
+        }
         private void ReturnTitle(IEnumerable<XElement> q)
         {
             if(q.Count() != 0)

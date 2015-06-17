@@ -19,17 +19,28 @@ namespace musicXml
     public class Track : IElement
     {
         #region メンバ変数
-        List<Note> notes;
-        List<List<Note>> notesByMeasure;
-        PartClass partClass;
+        private List<Note> notes;
+        private List<List<Note>> notesByMeasure;
+        private PartClass partClass;
         private ClefType clefType;
         private int tempo;
         //
-        Print print;
-        Attributes attributes;
+        private Print print;
+        private Attributes attributes;
+        private Identification identification;
         #endregion
 
         #region プロパティ
+        /// <summary>
+        /// このmusicXMLを作成したソフトなどの情報
+        /// </summary>
+        public Identification Identification
+        {
+            get
+            {
+                return this.Identification;
+            }
+        }
         /// <summary>
         /// テンポ
         /// </summary>

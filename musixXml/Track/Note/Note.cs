@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.ComponentModel;
 using musicXml.NoteElements;
+using System.Drawing;
 
 namespace musicXml
 {
@@ -54,6 +55,7 @@ namespace musicXml
         private Lyrics lyrics;
         private int dotNum;
         private int measure;
+        private Point position;
         #region static
         private static int division;
         private static int[] basicNote = new int[] { 1, 2, 3, 4, 6, 8, 12, 16 };
@@ -161,6 +163,33 @@ namespace musicXml
             get
             {
                 return this.duration;
+            }
+        }
+        /// <summary>
+        /// 音符座標に対応しているかどうか
+        /// </summary>
+        public bool isPosition
+        {
+            get
+            {
+                if(this.position !=null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        /// <summary>
+        /// 音符座標
+        /// </summary>
+        public Point Position
+        {
+            get
+            {
+                return this.position;
             }
         }
         #endregion
