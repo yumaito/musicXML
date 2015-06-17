@@ -127,8 +127,9 @@ namespace musicXml
             }
             //
             //音符情報
-            IEnumerable<XElement> noteNode = node.Descendants("note");
-            this.notes = new List<Note>();
+            //IEnumerable<XElement> noteNode = node.Descendants("note");
+            //this.notes = new List<Note>();
+            this.ReturnNotes();
             //foreach(XElement nn in noteNode)
             //{
             //    //小節番号を取得
@@ -152,13 +153,19 @@ namespace musicXml
         public XElement XmlElement(bool isFirst)
         {
             XElement result = new XElement("part");
+            //notesを全て小節単位に書き直す
 
             //result.Add(this.partClass.PrintLayout(isFirst));
             //小節番号でループ
             for (int i = 0; i < measures.Count; i++)
             {
                 XElement measure = this.measures[i].XmlElement();
-
+                if (i == 0)
+                {
+                    //最初の小節のみプリント要素とアトリビュート要素を加える
+                    measure.AddFirst(this.Attribute());
+                    measure.AddFirst(this.partClass.PrintLayout(isFirst));
+                }
                 //measure.Add(new XAttribute("number", (i + 1).ToString()));
                 //if (i == 0)
                 //{
@@ -172,7 +179,7 @@ namespace musicXml
                 //{
                 //    measure.Add(this.notesByMeasure[i][j].XmlElement());
                 //}
-                ////======================================
+                //======================================
                 //現在の小節をパートに加える処理
                 result.Add(measure);
             }
@@ -212,9 +219,18 @@ namespace musicXml
             return result;
         }
         //音符列を小節ごとに再編成し直す処理
-        private void ReturnByMeasure(XElement node)
+        private void ReturnNotes()
         {
             //IEnumerable<XElement> measure = node.Elements("measure");
+            this.notes = new List<Note>();
+            foreach (Measure ms in measures)
+            {
+                this.notes.AddRange(ms.Notes);
+            }
+        }
+        private void CreateMeasure()
+        {
+            this.measures = new List<Measure>();
 
         }
         #endregion
