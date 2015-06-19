@@ -119,25 +119,30 @@ namespace musicXml
         private List<Note> OneNoteOptimize(List<Note> n)
         {
             List<Note> result = new List<Note>();
-            int l = 0;
-            for (int i = Note.BasicNote.Length - 1; i >= 0; i++)
-            {
-                if (result.Count - Note.BasicNote[i] > 0)
-                {
-                    l = i;
-                    result.Add(n[0].Clone(Note.BasicNote[i]));
-                    //残りの音符
-                    break;
-                }
-                if (result.Count - Note.BasicNote[i] == 0)
-                {
-                    l = i;
-                    result.Add(n[0].Clone(Note.BasicNote[i]));
-                    break;
-                }
-            }
+            //int l = 0;
+            //for (int i = Note.BasicNote.Length - 1; i >= 0; i++)
+            //{
+            //    if (result.Count - Note.BasicNote[i] > 0)
+            //    {
+            //        l = i;
+            //        result.Add(n[0].Clone(Note.BasicNote[i]));
+            //        //残りの音符
+            //        int s = Note.BasicNote[i] - 1;
+            //        //最後までの数
+            //        int c = n.Count - s;
+            //        result.AddRange(this.OneNoteOptimize(n.GetRange(s, c)));
+            //        break;
+            //    }
+            //    if (result.Count - Note.BasicNote[i] == 0)
+            //    {
+            //        l = i;
+            //        result.Add(n[0].Clone(Note.BasicNote[i]));
+            //        break;
+            //    }
+            //}
             //
-            result.Add(n[0].Clone(Note.BasicNote[l]));
+            //result.Add(n[0].Clone(Note.BasicNote[l]));
+            return result;
         }
         #endregion
     }

@@ -135,7 +135,7 @@
             このmusicXMLが作成された日付
             </summary>
         </member>
-        <member name="M:musicXml.Measure.Optimize">
+        <member name="M:musicXml.Measure.Optimize(System.Collections.Generic.List{musicXml.Note})">
             <summary>
             基本音符のみで構成するように最適化
             </summary>
