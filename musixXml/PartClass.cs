@@ -107,6 +107,10 @@ namespace musicXml
             this.midiProgram = midiProgram;
             this.channel = channel;
         }
+        /// <summary>
+        /// デフォルト値を設定（ファイル出力時に使える）
+        /// </summary>
+        /// <param name="id"></param>
         public PartClass(string id)
             : this(id, "Piano", "P.", 1, 1)
         {

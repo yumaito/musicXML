@@ -135,7 +135,7 @@
             このmusicXMLが作成された日付
             </summary>
         </member>
-        <member name="M:musicXml.Measure.Optimize">
+        <member name="M:musicXml.Measure.Optimize(System.Collections.Generic.List{musicXml.Note})">
             <summary>
             基本音符のみで構成するように最適化
             </summary>
@@ -318,7 +318,7 @@
             <param name="tracks">トラック（各ノートはdivisionを4とする）</param>
             <param name="partName">パートリスト</param>
             <param name="title">タイトル</param>
-            <param name="generater">生成するソフトの名称</param>
+            <param name="generator">生成するソフトの名称</param>
         </member>
         <member name="M:musicXml.OutputMusicXml.SaveFile(System.String,System.String)">
             <summary>
@@ -326,7 +326,6 @@
             </summary>
             <param name="path">ファイルを保存する場所</param>
             <param name="title">曲のタイトル</param>
-            <param name="generater">このソフトウェアの名前</param>
         </member>
         <member name="M:musicXml.PartClass.#ctor(System.String,System.String,System.String,System.Int32,System.Int32)">
             <summary>
@@ -346,6 +345,12 @@
             <param name="name"></param>
             <param name="midiProgram"></param>
             <param name="channel"></param>
+        </member>
+        <member name="M:musicXml.PartClass.#ctor(System.String)">
+            <summary>
+            デフォルト値を設定（ファイル出力時に使える）
+            </summary>
+            <param name="id"></param>
         </member>
         <member name="M:musicXml.PartClass.PrintLayout(System.Boolean)">
             <summary>
@@ -473,6 +478,22 @@
             <summary>
             フレット番号
             </summary>
+        </member>
+        <member name="M:musicXml.Track.#ctor(System.Collections.Generic.List{musicXml.Note},musicXml.PartClass,musicXml.ClefType)">
+            <summary>
+            ノートリストからトラックを作成
+            </summary>
+            <param name="notes"></param>
+            <param name="part"></param>
+            <param name="clefType"></param>
+        </member>
+        <member name="M:musicXml.Track.#ctor(System.Collections.Generic.List{musicXml.Measure},musicXml.PartClass,musicXml.ClefType)">
+            <summary>
+            小節リストからトラックを作成
+            </summary>
+            <param name="measure"></param>
+            <param name="part"></param>
+            <param name="clefType"></param>
         </member>
         <member name="M:musicXml.Track.XmlElement">
             <summary>

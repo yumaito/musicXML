@@ -95,6 +95,12 @@ namespace musicXml
         #endregion
 
         #region コンストラクタ
+        /// <summary>
+        /// ノートリストからトラックを作成
+        /// </summary>
+        /// <param name="notes"></param>
+        /// <param name="part"></param>
+        /// <param name="clefType"></param>
         public Track(List<Note> notes, PartClass part, ClefType clefType)
         {
             this.notes = notes;
@@ -104,6 +110,12 @@ namespace musicXml
             this.CreateMeasure();
             //
         }
+        /// <summary>
+        /// 小節リストからトラックを作成
+        /// </summary>
+        /// <param name="measure"></param>
+        /// <param name="part"></param>
+        /// <param name="clefType"></param>
         public Track(List<Measure> measure, PartClass part, ClefType clefType)
         {
             this.measures = measure;

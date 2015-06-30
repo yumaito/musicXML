@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.IO;
-
+using musicXml.NoteElements;
+using musicXml.AttributeElements;
 
 namespace musicXml
 {
-    public class Measure:IElement
+    public class Measure : IElement
     {
         #region メンバ変数
         private int number;
@@ -84,7 +85,7 @@ namespace musicXml
             {
                 result.Add(new XAttribute("width", this.width));
             }
-            foreach(Note note in this.notes)
+            foreach (Note note in this.notes)
             {
                 result.Add(note.XmlElement());
             }
@@ -119,31 +120,13 @@ namespace musicXml
         private List<Note> OneNoteOptimize(List<Note> n)
         {
             List<Note> result = new List<Note>();
-            //int l = 0;
-            //for (int i = Note.BasicNote.Length - 1; i >= 0; i++)
-            //{
-            //    if (result.Count - Note.BasicNote[i] > 0)
-            //    {
-            //        l = i;
-            //        result.Add(n[0].Clone(Note.BasicNote[i]));
-            //        //残りの音符
-            //        int s = Note.BasicNote[i] - 1;
-            //        //最後までの数
-            //        int c = n.Count - s;
-            //        result.AddRange(this.OneNoteOptimize(n.GetRange(s, c)));
-            //        break;
-            //    }
-            //    if (result.Count - Note.BasicNote[i] == 0)
-            //    {
-            //        l = i;
-            //        result.Add(n[0].Clone(Note.BasicNote[i]));
-            //        break;
-            //    }
-            //}
-            //
-            //result.Add(n[0].Clone(Note.BasicNote[l]));
+            Pitch p = n[0].Pitch;
             return result;
         }
+        //private List<int> NearestBasicNote(List<Note> n)
+        //{
+
+        //}
         #endregion
     }
 }

@@ -33,17 +33,17 @@ namespace musicXml
         /// <param name="tracks">トラック（各ノートはdivisionを4とする）</param>
         /// <param name="partName">パートリスト</param>
         /// <param name="title">タイトル</param>
-        /// <param name="generater">生成するソフトの名称</param>
-        public OutputMusicXml(string path, List<Track> tracks, PartClass[] partName, string title, string generater)
+        /// <param name="generator">生成するソフトの名称</param>
+        public OutputMusicXml(string path, List<Track> tracks, PartClass[] partName, string title, string generator)
         {
-            if (notes.Count != partName.Length)
+            if (tracks.Count != partName.Length)
             {
                 //パートネームの数と音符リストの数が異なる場合例外を返す
                 throw new ArgumentException("音符リストの数とパートネームの数が異なります！");
             }
             //.notes = notes;
             this.partName = partName;
-            this.identification = new musicXml.Identification(generater, DateTime.Now);
+            this.identification = new musicXml.Identification(generator, DateTime.Now);
             this.tracks = tracks;
             //1拍の長さを4に設定
             Note.Division = 4;
@@ -61,7 +61,6 @@ namespace musicXml
         /// </summary>
         /// <param name="path">ファイルを保存する場所</param>
         /// <param name="title">曲のタイトル</param>
-        /// <param name="generater">このソフトウェアの名前</param>
         private void SaveFile(string path, string title)
         {
             XDocument document = new XDocument(
